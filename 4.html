@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My College Fest Website</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightblue;
+            margin: 0px;
+        }
+
+        .header {
+            background-color: blue;
+            color: white;
+            text-align: center;
+            padding-left: 20px;
+        }
+
+        .navbar {
+            background-color: darkblue;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            color: yellow;
+        }
+
+        .content {
+            margin: 20px;
+            padding: 15px;
+            background-color: white;
+            border: 2px solid black;
+        }
+
+        table {
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        table td, table th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        input, select, textarea {
+            width: 200px;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .submit-btn {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .gallery-box {
+            width: 200px;
+            height: 150px;
+            background-color: gray;
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: blue;
+            margin-right: 20px;
+        }
+
+        h1 {
+            color: red;
+        }
+
+        h2 {
+            color: darkgreen;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome to Our College Fest!!!</h1>
+        <h2>March 15, 16, 17 2025</h2>
+        <p>Come and join us for the best fest ever! It will be so much fun!</p>
+    </div>
+
+    <div class="navbar">
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('events')">Events List</a>
+        <a href="#" onclick="showPage('schedule')">Schedule/Results</a>
+        <a href="#" onclick="showPage('register')">Registration</a>
+        <a href="#" onclick="showPage('gallery')">Photo Gallery</a>
+        <a href="#" onclick="showPage('contact')">Contact Us</a>
+    </div>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="content">
+            <h1>About Our Fest</h1>
+            <p>Hi everyone! This is our college fest website. I made this website for our annual fest.</p>
+            <p><strong>Event Name:</strong> TechFest 2025</p>
+            <p><strong>Date:</strong> March 15-17, 2025</p>
+            <p><strong>Description:</strong> We are having a 3 day technical festival with lots of competitions and fun activities. There will be programming contests, robot fights, web design, and much more. Everyone is invited!</p>
+            
+            <h2>Why you should come:</h2>
+            <ul>
+                <li>Win prizes</li>
+                <li>Meet new people</li>
+                <li>Learn new things</li>
+                <li>Have fun</li>
+                <li>Free food (maybe)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- EVENTS PAGE -->
+    <div id="events" class="page">
+        <div class="content">
+            <h1>List of Events</h1>
+            <p>Here are all the events we are having:</p>
+            
+            <ol>
+                <li>
+                    <strong>Programming Contest</strong><br>
+                    This is for people who know how to code. You have to solve problems using computer programs.<br>
+                    Prize: Rs. 5000
+                </li>
+                <li>
+                    <strong>Robot Fighting</strong><br>
+                    Make robots and fight with other robots. Very cool!<br>
+                    Prize: Rs. 8000
+                </li>
+                <li>
+                    <strong>Website Making</strong><br>
+                    Make websites in limited time. Show your creativity.<br>
+                    Prize: Rs. 4000
+                </li>
+                <li>
+                    <strong>Tech Quiz</strong><br>
+                    Answer questions about technology and computers.<br>
+                    Prize: Rs. 2000
+                </li>
+                <li>
+                    <strong>Project Display</strong><br>
+                    Show your projects to everyone. Get feedback from experts.<br>
+                    Prize: Rs. 3000
+                </li>
+                <li>
+                    <strong>AI Competition</strong><br>
+                    Use artificial intelligence to solve real problems.<br>
+                    Prize: Rs. 6000
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- SCHEDULE PAGE -->
+    <div id="schedule" class="page">
+        <div class="content">
+            <h1>Event Schedule and Results</h1>
+            <p>This table shows when each event will happen:</p>
+            
+            <table>
+                <tr>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Event Name</th>
+                    <th>Location</th>
+                    <th>Results</th>
+                </tr>
+                <tr>
+                    <td>Day 1</td>
+                    <td>10:00 AM</td>
+                    <td>Opening Ceremony</td>
+                    <td>Main Hall</td>
+                    <td>-</td>
+                </tr>
+                <tr>
+                    <td>Day 1</td>
+                    <td>11:00 AM</td>
+                    <td>Programming Contest</td>
+                    <td>Computer Lab</td>
+                    <td>Not yet</td>
+                </tr>
+                <tr>
+                    <td>Day 1</td>
+                    <td>2:00 PM</td>
+                    <td>Robot Fighting</td>
+                    <td>Ground</td>
+                    <td>Not yet</td>
+                </tr>
+                <tr>
+                    <td>Day 2</td>
+                    <td>9:00 AM</td>
+                    <td>Website Making</td>
+                    <td>Computer Lab</td>
+                    <td>Not yet</td>
+                </tr>
+                <tr>
+                    <td>Day 2</td>
+                    <td>1:00 PM</td>
+                    <td>Tech Quiz</td>
+                    <td>Classroom 1</td>
+                    <td>Not yet</td>
+                </tr>
+                <tr>
+                    <td>Day 2</td>
+                    <td>4:00 PM</td>
+                    <td>Project Display</td>
+                    <td>Exhibition Hall</td>
+                    <td>Not yet</td>
+                </tr>
+                <tr>
+                    <td>Day 3</td>
+                    <td>10:00 AM</td>
+                    <td>AI Competition</td>
+                    <td>Seminar Hall</td>
+                    <td>Not yet</td>
+                </tr>
+                <tr>
+                    <td>Day 3</td>
+                    <td>3:00 PM</td>
+                    <td>Prize Distribution</td>
+                    <td>Main Hall</td>
+                    <td>-</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- REGISTRATION PAGE -->
+    <div id="register" class="page">
+        <div class="content">
+            <h1>Registration Form</h1>
+            <p>Please fill this form to register for the fest:</p>
+            
+            <form onsubmit="submitRegistration()">
+                <p>Your Name: <input type="text" id="name" placeholder="Enter your full name"></p>
+                
+                <p>Email Address: <input type="email" id="email" placeholder="your@email.com"></p>
+                
+                <p>Phone Number: <input type="text" id="phone" placeholder="Your phone number"></p>
+                
+                <p>College Name: <input type="text" id="college" placeholder="Which college are you from?"></p>
+                
+                <p>Year: 
+                    <select id="year">
+                        <option>Select your year</option>
+                        <option>1st Year</option>
+                        <option>2nd Year</option>
+                        <option>3rd Year</option>
+                        <option>4th Year</option>
+                    </select>
+                </p>
+                
+                <p>Department: <input type="text" id="department" placeholder="Like CSE, ECE, etc."></p>
+                
+                <p>Which events do you want to join? (You can pick multiple):</p>
+                <p><input type="checkbox" name="events" value="programming"> Programming Contest</p>
+                <p><input type="checkbox" name="events" value="robot"> Robot Fighting</p>
+                <p><input type="checkbox" name="events" value="website"> Website Making</p>
+                <p><input type="checkbox" name="events" value="quiz"> Tech Quiz</p>
+                <p><input type="checkbox" name="events" value="project"> Project Display</p>
+                <p><input type="checkbox" name="events" value="ai"> AI Competition</p>
+                
+                <p>Tell us about yourself:<br>
+                <textarea id="about" rows="4" cols="50" placeholder="What do you know about technology? Any projects you made?"></textarea></p>
+                
+                <p>Any food allergies?: <input type="text" id="food" placeholder="Let us know if you have any food problems"></p>
+                
+                <p><button type="submit" class="submit-btn">Register Me!</button></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- GALLERY PAGE -->
+    <div id="gallery" class="page">
+        <div class="content">
+            <h1>Photo Gallery</h1>
+            <p>Here are some pictures from last year's fest:</p>
+            
+            <h2>Last Year Photos:</h2>
+            <div class="gallery-box">Opening Day Photo</div>
+            <div class="gallery-box">Coding Contest</div>
+            <div class="gallery-box">Robot Fight Scene</div>
+            <div class="gallery-box">Winners with Prizes</div>
+            <div class="gallery-box">Students Having Fun</div>
+            <div class="gallery-box">Project Displays</div>
+            <div class="gallery-box">Quiz Competition</div>
+            <div class="gallery-box">Food Stalls</div>
+            <div class="gallery-box">Cultural Program</div>
+            <div class="gallery-box">Closing Ceremony</div>
+            <div class="gallery-box">Group Photo</div>
+            <div class="gallery-box">Award Winners</div>
+            
+            <div class="social-links">
+                <p><strong>See more photos:</strong></p>
+                <a href="#">Facebook Page</a>
+                <a href="#">Instagram Photos</a>
+                <a href="#">Last Year Gallery</a>
+                <a href="#">YouTube Videos</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <div class="content">
+            <h1>Contact Us</h1>
+            <p>If you have any questions, please contact us:</p>
+            
+            <p><strong>Email:</strong> techfest2025@ourcollege.com</p>
+            <p><strong>Phone:</strong> +91 9876543210</p>
+            <p><strong>Address:</strong> ABC Engineering College, Tech City, State 123456</p>
+            
+            <p><strong>Organizing Committee:</strong></p>
+            <ul>
+                <li>Rahul Singh - Event Head (9876543211)</li>
+                <li>Priya Sharma - Registration Head (9876543212)</li>
+                <li>Amit Kumar - Technical Head (9876543213)</li>
+            </ul>
+            
+            <h2>Frequently Asked Questions (FAQs)</h2>
+            
+            <p><strong>Q: Do I need to pay money to participate?</strong><br>
+            A: No! Everything is free. We just want you to have fun and learn.</p>
+            
+            <p><strong>Q: Can I participate in multiple events?</strong><br>
+            A: Yes, you can join as many events as you want. Just make sure the timings don't clash.</p>
+            
+            <p><strong>Q: What should I bring?</strong><br>
+            A: Bring your laptop, charger, and student ID card. For robot fighting, bring your robot.</p>
+            
+            <p><strong>Q: Will you provide food?</strong><br>
+            A: Yes, we will have food stalls and some free snacks during breaks.</p>
+            
+            <p><strong>Q: Can students from other colleges come?</strong><br>
+            A: Yes! All college students are welcome. Just bring your college ID.</p>
+            
+            <p><strong>Q: Where can I stay if I'm from another city?</strong><br>
+            A: We can help you find nearby hostels or budget hotels. Contact us after registration.</p>
+            
+            <h2>Follow Us Online:</h2>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            var pages = document.getElementsByClassName('page');
+            for (var i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            
+            // Show the selected page
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function submitRegistration() {
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            
+            if (name == "" || email == "") {
+                alert("Please fill your name and email!");
+                return false;
+            }
+            
+            alert("Thank you " + name + "! Your registration is submitted. We will send you more details on " + email);
+            return false; // Prevent actual form submission
+        }
+    </script>
+
+</body>
+</html>
