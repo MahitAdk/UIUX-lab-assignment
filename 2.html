@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background-color: lightblue; text-align: center; padding: 20px; }
+        nav { background-color: #333; padding: 10px; text-align: center; }
+        nav a { color: white; margin: 0 10px; text-decoration: none; }
+        nav a:hover { text-decoration: underline; }
+        .banner { width: 100%; height: 300px; background: url('banner.jpg') no-repeat center; background-size: cover; }
+        table { border-collapse: collapse; width: 80%; margin: 20px auto; }
+        table, th, td { border: 1px solid #000; }
+        th, td { padding: 10px; text-align: center; }
+        form { width: 50%; margin: 20px auto; display: flex; flex-direction: column; gap: 10px; }
+        input, select, textarea { padding: 8px; }
+        img { width: 200px; height: 150px; margin: 10px; border: 1px solid #ccc; }
+        footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+        ul { width: 50%; margin: 20px auto; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to Adventure Travels</h1>
+</header>
+<nav>
+    <a href="index.html">Home</a>
+    <a href="packages.html">Packages</a>
+    <a href="booking.html">Booking</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About Us</a>
+</nav>
+<div class="banner"></div>
+<div style="padding:20px; text-align:center;">
+    <h2>Discover Your Next Adventure</h2>
+    <p>We offer affordable and exciting travel packages to the best destinations around the world.</p>
+    <h3>Travel Tips</h3>
+    <ul>
+        <li>Always carry copies of your important documents.</li>
+        <li>Learn basic phrases of the local language.</li>
+        <li>Keep some local currency handy.</li>
+    </ul>
+</div>
+<footer>
+    <p>Follow us on: <a href="#" style="color:white;">Facebook</a> | <a href="#" style="color:white;">Instagram</a></p>
+</footer>
+</body>
+</html>
+
+<!-- packages.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Packages</title>
+</head>
+<body>
+<header><h1>Our Tour Packages</h1></header>
+<nav>
+    <a href="index.html">Home</a> | <a href="packages.html">Packages</a> | <a href="booking.html">Booking</a> | <a href="gallery.html">Gallery</a> | <a href="about.html">About Us</a>
+</nav>
+<table>
+    <tr><th>Destination</th><th>Duration</th><th>Price</th></tr>
+    <tr><td>Paris</td><td>5 Days</td><td>$1000</td></tr>
+    <tr><td>Thailand</td><td>7 Days</td><td>$800</td></tr>
+    <tr><td>Dubai</td><td>4 Days</td><td>$900</td></tr>
+</table>
+</body>
+</html>
+
+<!-- booking.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Booking</title></head>
+<body>
+<header><h1>Book Your Trip</h1></header>
+<nav>
+    <a href="index.html">Home</a> | <a href="packages.html">Packages</a> | <a href="booking.html">Booking</a> | <a href="gallery.html">Gallery</a> | <a href="about.html">About Us</a>
+</nav>
+<form>
+    <label>Name:</label>
+    <input type="text" name="name" required>
+    <label>Travel Dates:</label>
+    <input type="date" name="start"> to <input type="date" name="end">
+    <label>Destination:</label>
+    <select name="destination">
+        <option>Paris</option>
+        <option>Thailand</option>
+        <option>Dubai</option>
+    </select>
+    <label>Package:</label>
+    <select name="package">
+        <option>Standard</option>
+        <option>Deluxe</option>
+        <option>Luxury</option>
+    </select>
+    <button type="submit">Book Now</button>
+</form>
+</body>
+</html>
+
+<!-- gallery.html -->
+<!DOCTYPE html>
+<html>
+<head><title>Gallery</title></head>
+<body>
+<header><h1>Travel Gallery</h1></header>
+<nav>
+    <a href="index.html">Home</a> | <a href="packages.html">Packages</a> | <a href="booking.html">Booking</a> | <a href="gallery.html">Gallery</a> | <a href="about.html">About Us</a>
+</nav>
+<div style="text-align:center;">
+    <figure>
+        <img src="paris.jpg" alt="Eiffel Tower">
+        <figcaption>Paris</figcaption>
+    </figure>
+    <figure>
+        <img src="thailand.jpg" alt="Beach">
+        <figcaption>Thailand</figcaption>
+    </figure>
+    <figure>
+        <img src="dubai.jpg" alt="Burj Khalifa">
+        <figcaption>Dubai</figcaption>
+    </figure>
+</div>
+</body>
+</html>
+
+<!-- about.html -->
+<!DOCTYPE html>
+<html>
+<head><title>About Us</title></head>
+<body>
+<header><h1>About Adventure Travels</h1></header>
+<nav>
+    <a href="index.html">Home</a> | <a href="packages.html">Packages</a> | <a href="booking.html">Booking</a> | <a href="gallery.html">Gallery</a> | <a href="about.html">About Us</a>
+</nav>
+<p style="padding:20px;">We are a beginner travel agency offering budget-friendly travel packages. Contact us via email at info@adventuretravels.com</p>
+<p>Follow us: <a href="#">Facebook</a> | <a href="#">Instagram</a></p>
+</body>
+</html>
