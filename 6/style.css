@@ -72,15 +72,14 @@ h1, h2 {
 
 /* Home Page Banner */
 .hero {
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1200x600/2980b9/ffffff?text=Explore+The+World');
     height: 60vh;
     background-size: cover;
     background-position: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
-    color: white;
+    color: black;
     text-align: center;
 }
 

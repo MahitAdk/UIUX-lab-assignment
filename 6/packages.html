@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <title>Packages | MRA Travels</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Internal style for active navigation highlighting */
+        nav ul li a.active {
+            color: #e67e22;
+            border-bottom: 2px solid #e67e22;
+        }
+    </style>
 </head>
 <body>
 
@@ -22,7 +29,7 @@
 
     <div class="container">
         <h2>Our Exclusive Tour Packages</h2>
-        <p>Choose from our wide range of curated travel experiences.</p>
+        <p>Prices listed below include all taxes.</p>
         
         <table>
             <thead>
@@ -30,51 +37,65 @@
                     <th>Package Name</th>
                     <th>Destination</th>
                     <th>Duration</th>
-                    <th>Price (per person)</th>
+                    <th>Season</th>
+                    <th>Base Price</th>
+                    <th>Final Price (₹)</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Swiss Delight</td>
-                    <td>Switzerland</td>
-                    <td>5 Days / 4 Nights</td>
-                    <td>Rs 1,20,000</td>
-                </tr>
-                <tr>
-                    <td>Tropical Bali</td>
-                    <td>Indonesia</td>
-                    <td>7 Days / 6 Nights</td>
-                    <td>Rs 80,000</td>
-                </tr>
-                <tr>
-                    <td>Parisian Dream</td>
-                    <td>France</td>
-                    <td>4 Days / 3 Nights</td>
-                    <td>Rs 9,50,000</td>
-                </tr>
-                <tr>
-                    <td>Safari Adventure</td>
-                    <td>Kenya</td>
-                    <td>6 Days / 5 Nights</td>
-                    <td>Rs 1,50,000</td>
-                </tr>
-            </tbody>
+            <tbody id="packages-table-body">
+                </tbody>
         </table>
-
-        <hr style="margin: 30px 0;">
-
-        <h3>Important Travel Tips</h3>
-        <ul class="tips-list">
-            <li>Always carry a copy of your passport and important documents.</li>
-            <li>Check visa requirements for your destination well in advance.</li>
-            <li>Pack a basic first-aid kit and necessary medications.</li>
-            <li>Inform your bank about your travel dates to avoid card blocking.</li>
-        </ul>
     </div>
 
     <footer>
         <p>&copy; 2025 MRA Travels. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        // 1. Highlight Active Navigation
+        const currentLocation = location.href;
+        const menuItem = document.querySelectorAll('nav ul li a');
+        menuItem.forEach(item => {
+            if(item.href === currentLocation) item.classList.add("active");
+        });
+
+        // 2. Data Source (Array of Objects)
+        const packagesData = [
+            { id: 1, name: 'Swiss Delight', dest: 'Switzerland', duration: 5, basePrice: 120000, season: 'Peak' },
+            { id: 2, name: 'Tropical Bali', dest: 'Indonesia', duration: 7, basePrice: 65000, season: 'Off-Peak' },
+            { id: 3, name: 'Parisian Dream', dest: 'France', duration: 4, basePrice: 90000, season: 'Peak' },
+            { id: 4, name: 'Safari Adventure', dest: 'Kenya', duration: 6, basePrice: 110000, season: 'Standard' }
+        ];
+
+        // 3. Render Table Loop
+        const tableBody = document.getElementById('packages-table-body');
+
+        packagesData.forEach(pkg => {
+            // Logic: Compute Final Price using operators and if/else
+            let multiplier = 1.0;
+            if (pkg.season === 'Peak') {
+                multiplier = 1.20; // 20% extra
+            } else if (pkg.season === 'Off-Peak') {
+                multiplier = 0.90; // 10% discount
+            }
+
+            const finalPrice = Math.round(pkg.basePrice * multiplier);
+
+            // Create HTML row
+            const row = `
+                <tr>
+                    <td>${pkg.name}</td>
+                    <td>${pkg.dest}</td>
+                    <td>${pkg.duration} Days</td>
+                    <td>${pkg.season}</td>
+                    <td>₹${pkg.basePrice.toLocaleString('en-IN')}</td>
+                    <td><strong>₹${finalPrice.toLocaleString('en-IN')}</strong></td>
+                </tr>
+            `;
+            
+            // Append to table
+            tableBody.innerHTML += row;
+        });
+    </script>
 </body>
 </html>

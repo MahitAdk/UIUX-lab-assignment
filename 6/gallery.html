@@ -2,14 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Gallery | Wanderlust Travels</title>
+    <title>Gallery | MRA Travels</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        nav ul li a.active { color: #e67e22; border-bottom: 2px solid #e67e22; }
+
+        /* Gallery Grid Styles */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+        .gallery-item:hover { transform: scale(1.03); }
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .caption { text-align: center; padding: 10px; background: #eee; font-weight: bold; }
+
+        /* Modal (Popup) Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; top: 0;
+            width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.85); 
+        }
+        .modal-content {
+            margin: 5% auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            border: 5px solid white;
+            border-radius: 5px;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px; right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        #modal-caption-text {
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <nav>
-            <div class="logo">Wanderlust Travels</div>
+            <div class="logo">MRA Travels</div>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="packages.html">Packages</a></li>
@@ -22,43 +79,75 @@
 
     <div class="container">
         <h2>Destination Gallery</h2>
+        <p>Click on any image to view it in full size.</p>
         
-        <div class="gallery-grid">
-            <figure>
-                <img src="C:\Users\user\OneDrive\Desktop\UIUX lab assignment\Images\swiss alps.jpg" alt="Mountains in Switzerland">
-                <figcaption>The Swiss Alps</figcaption>
-            </figure>
-            
-            <figure>
-                <img src="C:\Users\user\OneDrive\Desktop\UIUX lab assignment\Images\Eiffel tower.jpg" alt="Eiffel Tower Paris">
-                <figcaption>Paris, France</figcaption>
-            </figure>
-            
-            <figure>
-                <img src="C:\Users\user\OneDrive\Desktop\UIUX lab assignment\Images\bali beaches.jpg" alt="Beach in Bali">
-                <figcaption>Bali Beaches</figcaption>
-            </figure>
-            
-            <figure>
-                <img src="C:\Users\user\OneDrive\Desktop\UIUX lab assignment\Images\Kenya safari.jpg" alt="Safari in Kenya">
-                <figcaption>Kenyan Safari</figcaption>
-            </figure>
+        <div class="gallery-grid" id="gallery-container"></div>
+    </div>
 
-            <figure>
-                <img src="C:\Users\user\OneDrive\Desktop\UIUX lab assignment\Images\tokyo.jpg" alt="Tokyo City Lights">
-                <figcaption>Tokyo Nights</figcaption>
-            </figure>
-
-            <figure>
-                <img src="C:\Users\user\OneDrive\Desktop\UIUX lab assignment\Images\nyc.jpg" alt="Statue of Liberty">
-                <figcaption>New York City</figcaption>
-            </figure>
-        </div>
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+        <div id="modal-caption-text"></div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Wanderlust Travels. All Rights Reserved.</p>
+        <p>&copy; 2025 MRA Travels. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        // 1. Navigation Active State
+        const currentLocation = location.href;
+        document.querySelectorAll('nav ul li a').forEach(item => {
+            if(item.href === currentLocation) item.classList.add("active");
+        });
+
+        // 2. Gallery Data
+        const galleryData = [
+            { thumb: '../images/swiss_alps.jpg', large: '../images/swiss_alps.jpg', title: 'The Swiss Alps' },
+            { thumb: '../images/Eiffel_tower.jpg', large: '../images/Eiffel_tower.jpg', title: 'Paris, France' },
+            { thumb: '../images/bali_beaches.jpg', large: '../images/bali_beaches.jpg', title: 'Bali Beaches' },
+            { thumb: '../images/Kenya_safari.jpg', large: '../images/Kenya_safari.jpg', title: 'Kenyan Safari' },
+            { thumb: '../images/tokyo.jpg', large: '../images/tokyo.jpg', title: 'Tokyo City' },
+            { thumb: '../images/nyc.jpg', large: '../images/nyc.jpg', title: 'New York City' }
+        ];
+
+        // 3. Render Gallery & Modal Logic
+        const container = document.getElementById('gallery-container');
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalCaption = document.getElementById('modal-caption-text');
+        const closeSpan = document.querySelector('.close-modal');
+
+        // Loop through data to create elements
+        galleryData.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            
+            // Create image with data-large attribute
+            div.innerHTML = `
+                <img src="${item.thumb}" data-large="${item.large}" alt="${item.title}">
+                <div class="caption">${item.title}</div>
+            `;
+            
+            // Add click event to open modal
+            div.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                modal.style.display = "block";
+                // Read attribute logic
+                modalImg.src = img.getAttribute('data-large');
+                modalCaption.innerText = img.alt;
+            });
+
+            container.appendChild(div);
+        });
+
+        // Close Modal Logic
+        closeSpan.onclick = function() { modal.style.display = "none"; }
+        
+        // Close if clicked outside image
+        window.onclick = function(event) {
+            if (event.target == modal) { modal.style.display = "none"; }
+        }
+    </script>
 </body>
 </html>

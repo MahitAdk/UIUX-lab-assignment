@@ -2,14 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Book Now | Wanderlust Travels</title>
+    <title>Book Now | MRA Travels</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        nav ul li a.active { color: #e67e22; border-bottom: 2px solid #e67e22; }
+        
+        .price-display {
+            background-color: #e8f8f5;
+            padding: 15px;
+            border-left: 5px solid #27ae60;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+    </style>
 </head>
 <body>
 
     <header>
         <nav>
-            <div class="logo">Wanderlust Travels</div>
+            <div class="logo">MRA Travels</div>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="packages.html">Packages</a></li>
@@ -21,52 +33,115 @@
     </header>
 
     <div class="container">
-        <h2>Book Your Trip</h2>
-        <p style="text-align: center;">Fill out the form below and our agents will contact you shortly.</p>
+        <h2>Plan Your Trip</h2>
         
-        <form action="#" method="POST">
-            <div class="form-group">
-                <label for="name">Full Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
-            </div>
+        <div class="price-display">
+            Estimated Total: <strong id="total-price">₹0.00</strong>
+        </div>
 
+        <form id="booking-form" action="#" onsubmit="alert('Booking Submitted Successfully!'); return false;">
             <div class="form-group">
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="destination">Destination:</label>
-                <select id="destination" name="destination">
-                    <option value="switzerland">Switzerland</option>
-                    <option value="bali">Bali</option>
-                    <option value="france">France</option>
-                    <option value="kenya">Kenya</option>
-                    <option value="other">Other</option>
+                <label for="package-select">Select Package (Price per night):</label>
+                <select id="package-select" required>
+                    <option value="" disabled selected>Select a destination</option>
+                    <option value="20000">Switzerland (₹20,000/night)</option>
+                    <option value="8000">Bali (₹8,000/night)</option>
+                    <option value="18000">France (₹18,000/night)</option>
+                    <option value="15000">Kenya (₹15,000/night)</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label for="package">Package Type:</label>
-                <select id="package" name="package">
-                    <option value="standard">Standard</option>
-                    <option value="deluxe">Deluxe</option>
-                    <option value="premium">Premium</option>
-                </select>
+                <label>Check-in Date:</label>
+                <input type="date" id="checkin" required>
             </div>
 
             <div class="form-group">
-                <label for="date">Preferred Travel Date:</label>
-                <input type="date" id="date" name="date" required>
+                <label>Check-out Date:</label>
+                <input type="date" id="checkout" required>
             </div>
 
-            <button type="submit">Submit Booking Request</button>
+            <div class="form-group">
+                <label>Number of Guests (>2 guests adds 20% fee):</label>
+                <input type="number" id="guests" min="1" value="1" required>
+            </div>
+
+            <div class="form-group">
+                <label>Promo Code (Try 'EARLYBIRD' for 10% off):</label>
+                <input type="text" id="promo" placeholder="Optional code">
+            </div>
+
+            <button type="submit" id="submit-btn" disabled>Confirm Booking</button>
         </form>
     </div>
 
     <footer>
-        <p>&copy; 2025 Wanderlust Travels. All Rights Reserved.</p>
+        <p>&copy; 2025 MRA Travels. All Rights Reserved.</p>
     </footer>
 
+    <script>
+        // 1. Navigation Active State
+        const currentLocation = location.href;
+        document.querySelectorAll('nav ul li a').forEach(item => {
+            if(item.href === currentLocation) item.classList.add("active");
+        });
+
+        // 2. Booking Logic
+        const form = document.getElementById('booking-form');
+        const checkInInput = document.getElementById('checkin');
+        const checkOutInput = document.getElementById('checkout');
+        const guestsInput = document.getElementById('guests');
+        const packageSelect = document.getElementById('package-select');
+        const promoInput = document.getElementById('promo');
+        const totalDisplay = document.getElementById('total-price');
+        const submitBtn = document.getElementById('submit-btn');
+
+        function calculateTotal() {
+            const checkIn = new Date(checkInInput.value);
+            const checkOut = new Date(checkOutInput.value);
+            const guests = parseInt(guestsInput.value) || 1;
+            const basePricePerNight = parseInt(packageSelect.value) || 0;
+            const promoCode = promoInput.value.toUpperCase().trim();
+
+            // Validation: Ensure dates are selected and Checkout > Checkin
+            if (!checkInInput.value || !checkOutInput.value || checkOut <= checkIn) {
+                totalDisplay.innerText = "Please select valid dates.";
+                totalDisplay.style.color = "red";
+                submitBtn.disabled = true;
+                return;
+            }
+
+            // Date Math: Calculate Nights
+            const timeDiff = checkOut.getTime() - checkIn.getTime();
+            const nights = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+            // Basic Math
+            let total = basePricePerNight * nights * guests;
+
+            // Control Flow: Guest Multiplier
+            if (guests > 2) {
+                total *= 1.2; // 20% surcharge
+            }
+
+            // Control Flow: Promo Code Switch
+            switch(promoCode) {
+                case 'EARLYBIRD':
+                    total *= 0.90; // 10% discount
+                    break;
+                case 'SUMMER25':
+                    total -= 2000; // Flat ₹2000 off
+                    break;
+            }
+
+            // Update UI
+            totalDisplay.style.color = "#2c3e50";
+            totalDisplay.innerText = `₹${total.toLocaleString('en-IN')} (${nights} Nights)`;
+            submitBtn.disabled = false;
+        }
+
+        // Add Event Listeners to run logic on any change
+        form.addEventListener('change', calculateTotal);
+        form.addEventListener('input', calculateTotal);
+    </script>
 </body>
 </html>
