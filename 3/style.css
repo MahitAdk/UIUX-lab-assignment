@@ -1,0 +1,250 @@
+/* style.css */
+:root {
+    /* New Brighter Color Palette */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple Gradient */
+    --accent-color: #00d2d3;  /* Bright Cyan/Teal */
+    --accent-hover: #01a3a4;
+    --bg-color: #f8f9fa;      /* Very bright grey/white */
+    --text-color: #2d3436;
+    --white: #ffffff;
+    --shadow: 0 10px 20px rgba(0,0,0,0.1); /* Softer, larger shadow */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+ 
+    
+    /* color: var(--text-color); */
+   /* background-color: var(--bg-color); */
+   
+    min-height: 100vh;
+}
+
+/* Navigation */
+header {
+    background: var(--primary-gradient);
+    color: var(--white);
+    padding: 1.2rem 0;
+    /*box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4); /* Purple shadow glow */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+    text-shadow: 0 0 5px rgba(0, 210, 211, 0.5);
+}
+
+/* Main Container */
+main {
+    /* flex: 1; */
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    background: var(--white);
+    padding: 50px;
+    border-radius: 15px;
+    /* box-shadow: var(--shadow); */
+    border: 5px solid #764ba2; /* Purple top border */
+}
+
+h1 {
+    color: #764ba2; /* Matches the purple in gradient */
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+h2 {
+    color: #444;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Homepage Hero */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes text look like the gradient */
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: blue;
+    color: var(--white);
+    padding: 12px 30px;
+    
+    border-radius: 50px; /* Rounded pill shape */
+    margin-top: 25px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    /* transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s; */
+    /* box-shadow: 0 4px 6px rgba(0, 210, 211, 0.3);  */
+}
+
+.btn:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px); /* Lifts up slightly */
+    /* box-shadow: 0 6px 12px rgba(0, 210, 211, 0.4); */
+}
+
+/* Event List Styling */
+.event-list ul, .event-list ol {
+    padding-left: 25px;
+    margin-bottom: 20px;
+}
+
+.event-list li {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    padding-left: 5px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+table th, table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+table th {
+    background: var(--primary-gradient);
+    color: var(--white);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+table tr:hover {
+    background-color: #f1faff; /* Light cyan hover effect */
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #764ba2; /* Purple border on click */
+}
+
+/* Gallery Grid - Simplified (No Grid/Flex) */
+.gallery-grid {
+    text-align: center; /* Centers the images in the container */
+    padding: 20px 0;
+}
+
+.gallery-grid img {
+    display: inline-block; /* Makes images sit side-by-side */
+    vertical-align: middle; /* Aligns them neatly if heights differ slightly */
+    width: 300px;          /* Sets a fixed width */
+    height: 200px;         /* Sets a fixed height */
+    margin: 15px;          /* Adds space around every image */
+    object-fit: cover;     /* Ensures the image doesn't look stretched */
+    border-radius: 10px;   /* Rounded corners */
+    transition: transform 0.3s;
+    
+    /* Optional: Keeps the border style from previous theme */
+    border: 2px solid rgba(255, 255, 255, 0.3); 
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+    z-index: 10;            /* Brings image to front on hover */
+    position: relative;     /* Required for z-index to work with inline-block */
+}
+
+/* Footer */
+footer {
+    background: var(--text-color); /* Dark grey for footer contrast */
+    color: var(--white);
+    text-align: center;
+    padding: 30px;
+    margin-top: auto;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.social-links a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}

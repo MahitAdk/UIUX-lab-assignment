@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - TechFest 2025</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TechFest 2025</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="schedule.html">Schedule</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Participant Registration</h1>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="fullname">Full Name:</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Enter your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">College Email ID:</label>
+                <input type="email" id="email" name="email" placeholder="example@college.edu" required>
+            </div>
+
+            <div class="form-group">
+                <label for="event-select">Select Event:</label>
+                <select id="event-select" name="event">
+                    <option value="hackathon">Hackathon</option>
+                    <option value="robowar">RoboWar</option>
+                    <option value="gaming">Gaming Tournament</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="members">Number of Team Members:</label>
+                <input type="number" id="members" name="members" min="1" max="5">
+            </div>
+
+            <button type="submit" class="btn">Submit Registration</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 College TechFest Committee.</p>
+    </footer>
+</body>
+</html>

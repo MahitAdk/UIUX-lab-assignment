@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adventure Travels</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; scroll-behavior: smooth; }
+    header { background-color: lightblue; text-align: center; padding: 20px; }
+    nav { background: #333; padding: 10px; position: sticky; top: 0; z-index: 10; }
+    nav a { color: white; margin: 0 10px; text-decoration: none; }
+    nav a.active { background: lightblue; color: black; padding: 5px 10px; border-radius: 4px; }
+    section { padding: 40px 20px; }
+    .banner { width: 100%; height: 250px; background: url('banner.jpg') no-repeat center/cover; }
+    table { border-collapse: collapse; width: 80%; margin: 20px auto; }
+    th, td { border: 1px solid #000; padding: 10px; text-align: center; }
+    form { width: 50%; margin: auto; display: flex; flex-direction: column; gap: 10px; }
+    input, select, button { padding: 8px; }
+    #total { font-weight: bold; margin-top: 10px; }
+    #submitBtn:disabled { background: gray; cursor: not-allowed; }
+    img.thumb { width: 200px; height: 150px; margin: 10px; cursor: pointer; border: 1px solid #ccc; }
+    #modal { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); justify-content:center; align-items:center; }
+    #modal img { max-width:80%; max-height:80%; border: 3px solid white; }
+    footer { background:#333; color:white; text-align:center; padding:10px; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Welcome to Adventure Travels</h1>
+</header>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#packages">Packages</a>
+  <a href="#booking">Booking</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#about">About Us</a>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="banner"></div>
+  <h2 style="text-align:center;">Discover Your Next Adventure</h2>
+  <p style="text-align:center;">Affordable and exciting travel packages to the best destinations worldwide.</p>
+  <h3>Travel Tips</h3>
+  <ul style="width:50%; margin:auto;">
+    <li>Always carry copies of important documents.</li>
+    <li>Learn basic phrases of the local language.</li>
+    <li>Keep some local currency handy.</li>
+  </ul>
+</section>
+
+<!-- PACKAGES -->
+<section id="packages">
+  <h2 style="text-align:center;">Our Tour Packages</h2>
+  <table id="packageTable">
+    <thead>
+      <tr>
+        <th>Destination</th><th>Duration</th><th>Base Price</th><th>Season</th><th>Final Price</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <h2 style="text-align:center;">Book Your Trip</h2>
+  <form id="bookingForm">
+    <label>Name:</label>
+    <input type="text" id="name" required>
+    
+    <label>Travel Dates:</label>
+    <input type="date" id="start" required> to 
+    <input type="date" id="end" required>
+    
+    <label>Guests:</label>
+    <input type="number" id="guests" value="1" min="1" required>
+    
+    <label>Destination:</label>
+    <select id="destination">
+      <option value="1000">Paris ($1000/night)</option>
+      <option value="800">Thailand ($800/night)</option>
+      <option value="900">Dubai ($900/night)</option>
+    </select>
+    
+    <label>Promo Code:</label>
+    <input type="text" id="promo">
+    
+    <div id="total">Total: $0</div>
+    <button type="submit" id="submitBtn" disabled>Book Now</button>
+  </form>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h2 style="text-align:center;">Travel Gallery</h2>
+  <div style="text-align:center;">
+    <img class="thumb" src="C:\Users\user\Downloads\pexels-suissounet-1530259.jpg" alt="Paris" data-large="paris.jpg" title="Eiffel Tower, Paris">Eiffel Tower, Paris
+    <img class="thumb" src="C:\Users\user\Downloads\tom-lorber-NSaluZbGc6Y-unsplash.jpg" alt="Thailand" data-large="thailand.jpg" title="Beach in Thailand">Thai Beach
+    <img class="thumb" src="C:\Users\user\Downloads\pexels-pixabay-162031.jpg" alt="Dubai" placeholder="Burj Khalifa" title="Burj Khalifa, Dubai">Burj Khalifa, Dubai
+  </div>
+  <div id="modal"><img id="modalImg" src=""></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2>About Adventure Travels</h2>
+  <p>We are a beginner travel agency offering budget-friendly travel packages. Contact us via email at <b>info@adventuretravels.com</b></p>
+  <p>Follow us: <a href="#">Facebook</a> | <a href="#">Instagram</a></p>
+</section>
+
+<footer>
+  <p>&copy; 2025 Adventure Travels</p>
+</footer>
+
+<script>
+// ---------- PACKAGES ----------
+const packages = [
+  { id: 1, destination: "Paris", durationDays: 5, basePrice: 1000, season: "Peak" },
+  { id: 2, destination: "Thailand", durationDays: 7, basePrice: 800, season: "Off" },
+  { id: 3, destination: "Dubai", durationDays: 4, basePrice: 900, season: "Shoulder" }
+];
+
+function calculatePrice(pkg) {
+  let multiplier = 1;
+  switch(pkg.season) {
+    case "Peak": multiplier = 1.5; break;
+    case "Off": multiplier = 0.8; break;
+    case "Shoulder": multiplier = 1.2; break;
+  }
+  if (pkg.durationDays > 5) multiplier += 0.1;
+  return pkg.basePrice * multiplier;
+}
+
+const tbody = document.querySelector("#packageTable tbody");
+packages.forEach(pkg => {
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td>${pkg.destination}</td>
+    <td>${pkg.durationDays} Days</td>
+    <td>$${pkg.basePrice}</td>
+    <td>${pkg.season}</td>
+    <td>$${calculatePrice(pkg).toFixed(2)}</td>
+  `;
+  tbody.appendChild(row);
+});
+
+// ---------- BOOKING ----------
+function calculateBooking() {
+  const name = document.getElementById("name").value.trim();
+  const start = new Date(document.getElementById("start").value);
+  const end = new Date(document.getElementById("end").value);
+  const guests = parseInt(document.getElementById("guests").value);
+  const basePrice = parseInt(document.getElementById("destination").value);
+  const promo = document.getElementById("promo").value.trim().toUpperCase();
+
+  let nights = (end - start) / (1000*60*60*24);
+  if (isNaN(nights) || nights <= 0) nights = 0;
+
+  let total = basePrice * nights;
+  if (guests > 2) total *= 1.2;
+
+  switch(promo) {
+    case "EARLYBIRD": total *= 0.9; break;
+    case "FAMILY": total *= 0.85; break;
+  }
+
+  document.getElementById("total").textContent = "Total: $" + total.toFixed(2);
+  document.getElementById("submitBtn").disabled = !(name && nights > 0);
+}
+
+document.querySelectorAll("#bookingForm input, #bookingForm select").forEach(el => {
+  el.addEventListener("input", calculateBooking);
+});
+document.getElementById("bookingForm").addEventListener("submit", e => {
+  e.preventDefault();
+  alert("Booking submitted!");
+});
+
+// ---------- GALLERY ----------
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modalImg");
+document.querySelectorAll("img[data-large]").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.style.display = "flex";
+    modalImg.src = img.getAttribute("data-large");
+    modalImg.alt = img.alt;
+    modalImg.title = img.title;
+  });
+});
+modal.addEventListener("click", () => { modal.style.display = "none"; });
+
+// ---------- NAV ACTIVE ----------
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(sec => {
+    const top = window.scrollY;
+    if (top >= sec.offsetTop - 60) current = sec.getAttribute("id");
+  });
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href").includes(current)) link.classList.add("active");
+  });
+});
+</script>
+</body>
+</html>

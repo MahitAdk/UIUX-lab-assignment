@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Now | Wanderlust Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">Wanderlust Travels</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="packages.html">Packages</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Book Your Trip</h2>
+        <p style="text-align: center;">Fill out the form below and our agents will contact you shortly.</p>
+        
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="destination">Destination:</label>
+                <select id="destination" name="destination">
+                    <option value="switzerland">Switzerland</option>
+                    <option value="bali">Bali</option>
+                    <option value="france">France</option>
+                    <option value="kenya">Kenya</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="package">Package Type:</label>
+                <select id="package" name="package">
+                    <option value="standard">Standard</option>
+                    <option value="deluxe">Deluxe</option>
+                    <option value="premium">Premium</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Preferred Travel Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <button type="submit">Submit Booking Request</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Wanderlust Travels. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
