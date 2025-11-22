@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mahit's Portfolio</title>
+    <style>
+        /* ----------- GLOBAL STYLES ----------- */
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f3f6fa;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ----------- HEADER ----------- */
+        header {
+            background: linear-gradient(to right, #002f6c, #005bb5);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            font-size: 16px;
+            color: #dce6f6;
+        }
+
+        /* ----------- SECTIONS ----------- */
+        section {
+            width: 80%;
+            margin: auto;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #003972;
+        }
+
+        /* ----------- ABOUT ME ----------- */
+        #about {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #about img {
+            border-radius: 10px;
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 3px solid #003972;
+        }
+
+        #about p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* ----------- EDUCATION TABLE ----------- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 14px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #d9e8ff;
+            font-weight: bold;
+        }
+
+        /* ----------- SKILLS ----------- */
+        .skills-list {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .skills-list ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        /* ----------- PROJECTS ----------- */
+        .project-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #005bb5;
+            margin-bottom: 20px;
+        }
+
+        /* ----------- CONTACT ----------- */
+        .contact-box {
+            text-align: center;
+            background: #eef4ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* ----------- FOOTER ----------- */
+        footer {
+            background: #002f6c;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!----------------- HEADER ----------------->
+    <header>
+        <h1>Mahit's Portfolio</h1>
+        <p><em>“Hard work beats talent when talent doesn’t work hard.”</em></p>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+
+    <!----------------- ABOUT ME ----------------->
+    <section id="about">
+        <div style="flex: 1;">
+            <h2 class="section-title">About Me</h2>
+
+            <p>
+                Hello! My name is <mark>Mahit</mark> and I am currently learning web development.  
+                I love building websites and exploring new technologies every day.
+            </p>
+            <p>
+                I am also exploring <strong>Agentic AI</strong> using <u>LangChain</u>, which I find extremely exciting.
+            </p>
+            <p>
+                My goal is to become a strong full-stack developer and build impactful projects through continuous learning.
+            </p>
+        </div>
+
+        <img src="C:\Users\user\OneDrive\Desktop\UIUX lab assignment\Images\Profile.jpg" alt="My Photo" title="Mahit's Profile Picture">
+    </section>
+
+
+    <!----------------- EDUCATION ----------------->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+
+        <table>
+            <tr>
+                <th>Level</th>
+                <th>Institution</th>
+                <th>Year</th>
+            </tr>
+
+            <tr>
+                <td>Grade 10</td>
+                <td rowspan="2">NEB Board</td>
+                <td>Passed</td>
+            </tr>
+
+            <tr>
+                <td>Grade 12</td>
+                <td>Passed</td>
+            </tr>
+
+            <tr>
+                <td colspan="3"><strong>Currently Pursuing B.Tech CSE at TIET</strong></td>
+            </tr>
+        </table>
+    </section>
+
+
+    <!----------------- SKILLS ----------------->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+
+        <div class="skills-list">
+            <ul>
+                <li>C / C++</li>
+                <li>JavaScript</li>
+                <li>Python</li>
+                <li>TypeScript</li>
+            </ul>
+
+            <ul>
+                <li>React</li>
+                <li>Express.js</li>
+                <li>Next.js</li>
+                <li>LangChain</li>
+            </ul>
+
+            <ul>
+                <li>Git & GitHub</li>
+                <li>AWS (beginner)</li>
+                <li>Docke(still figuring out the basics)</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <!----------------- PROJECTS ----------------->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>
+                A simple personal website built using <b>HTML</b> and <b>CSS</b>.  
+                <a href="#">View Project</a>
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>Todo App (JavaScript)</h3>
+            <p>
+                A small project to practice DOM manipulation.  
+                <a href="#">View Code on GitHub</a>
+            </p>
+        </div>
+    </section>
+
+
+    <!----------------- CONTACT ----------------->
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+
+        <div class="contact-box">
+            <p>You can reach me at:</p>
+            <p><strong>Email:</strong> <a href="mailto:mahit@email.com">mahit@email.com</a></p>
+
+            <p>
+                Connect with me here: <br>
+                <a href="https://linkedin.com" target="_blank">LinkedIn</a> |
+                <a href="https://github.com" target="_blank">GitHub</a>
+            </p>
+        </div>
+    </section>
+
+
+   
+    <footer>
+        Made by <strong>Mahit Adhikari</strong>
+    </footer>
+
+</body>
+</html>
