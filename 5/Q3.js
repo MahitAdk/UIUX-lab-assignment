@@ -67,13 +67,13 @@
     
     <div class="form-group">
         <label for="email">Email:</label>
-        <input type="text" id="email" placeholder="Enter your email">
+        <input type="email" id="email" placeholder="Enter your email">
         <div id="emailError" class="error"></div>
     </div>
     
     <div class="form-group">
         <label for="age">Age:</label>
-        <input type="text" id="age" placeholder="Enter your age">
+        <input type="number" id="age" placeholder="Enter your age">
         <div id="ageError" class="error"></div>
     </div>
     
@@ -83,66 +83,42 @@
 
     <script>
         function validateForm() {
-            // Get form values
-            let name = document.getElementById('name').value;
-            let email = document.getElementById('email').value;
-            let age = document.getElementById('age').value;
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const age = document.getElementById('age').value;
             
-            // Clear previous error messages
-            document.getElementById('nameError').innerHTML = '';
-            document.getElementById('emailError').innerHTML = '';
-            document.getElementById('ageError').innerHTML = '';
-            document.getElementById('successMessage').innerHTML = '';
+            // Clear previous messages
+            ['nameError', 'emailError', 'ageError', 'successMessage'].forEach(id => 
+                document.getElementById(id).innerHTML = ''
+            );
             
             let isValid = true;
             
             // Validate name
-            if(name == '') {
-                document.getElementById('nameError').innerHTML = 'Name field cannot be empty';
+            if (!name) {
+                document.getElementById('nameError').innerHTML = 'Name is required';
                 isValid = false;
             }
             
             // Validate email
-            if(email == '') {
-                document.getElementById('emailError').innerHTML = 'Email field cannot be empty';
+            if (!email) {
+                document.getElementById('emailError').innerHTML = 'Email is required';
                 isValid = false;
-            } else {
-                // Simple email format check
-                let hasAt = false;
-                let hasDot = false;
-                
-                for(let i = 0; i < email.length; i++) {
-                    if(email[i] == '@') {
-                        hasAt = true;
-                    }
-                    if(email[i] == '.') {
-                        hasDot = true;
-                    }
-                }
-                
-                if(!hasAt || !hasDot) {
-                    document.getElementById('emailError').innerHTML = 'Please enter a valid email format';
-                    isValid = false;
-                }
+            } else if (!email.includes('@') || !email.includes('.')) {
+                document.getElementById('emailError').innerHTML = 'Invalid email format';
+                isValid = false;
             }
             
             // Validate age
-            if(age == '') {
-                document.getElementById('ageError').innerHTML = 'Age field cannot be empty';
+            if (!age) {
+                document.getElementById('ageError').innerHTML = 'Age is required';
                 isValid = false;
-            } else {
-                let ageNumber = Number(age);
-                if(isNaN(ageNumber)) {
-                    document.getElementById('ageError').innerHTML = 'Age must be a number';
-                    isValid = false;
-                } else if(ageNumber < 18 || ageNumber > 100) {
-                    document.getElementById('ageError').innerHTML = 'Age must be between 18 and 100';
-                    isValid = false;
-                }
+            } else if (age < 18 || age > 100) {
+                document.getElementById('ageError').innerHTML = 'Age must be between 18 and 100';
+                isValid = false;
             }
             
-            // Show success message if all validations pass
-            if(isValid) {
+            if (isValid) {
                 document.getElementById('successMessage').innerHTML = 'Form submitted successfully!';
             }
         }
